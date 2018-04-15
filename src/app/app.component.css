@@ -1,0 +1,16 @@
+h3 {
+    margin: 0 0 10px;
+  }
+  
+  pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+  }
+
+  btntype2 {
+    padding: 10px !important;
+
+  }
+  btntype2:active{    
+    color: blue !important;
+  }

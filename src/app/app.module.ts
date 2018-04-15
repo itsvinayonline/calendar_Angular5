@@ -1,18 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
-
-
-import { AppComponent } from './app.component';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'angular-calendar';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { DemoUtilsModule } from '../app/demo-utils/module';
+import { DemoComponent } from '../app/app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule
+    CommonModule,
+    FormsModule,
+    NgbModalModule.forRoot(),
+    CalendarModule.forRoot(),
+    DemoUtilsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [DemoComponent],
+  exports: [DemoComponent],
+  bootstrap: [DemoComponent]
 })
-export class AppModule { }
+export class DemoModule {}
