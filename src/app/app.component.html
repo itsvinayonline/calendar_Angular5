@@ -40,7 +40,7 @@
     <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
     <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
   </div>
-  <small style="margin: 5px">There are {{ day.events.length }} events on this day</small>
+  <small *ngIf="day.events.length>0" style="margin: 5px">There are {{ day.events.length }} events on this day</small>
 </ng-template>
 
 <div [ngSwitch]="view">
