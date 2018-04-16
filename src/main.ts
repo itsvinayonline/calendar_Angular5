@@ -4,6 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { DemoModule } from './app/app.module';
 import { DemoComponent } from './app/app.component';
+import { enableProdMode } from '@angular/core';
+import { environment } from './environments/environment';
+
 
 @NgModule({
   imports: [
@@ -15,4 +18,8 @@ import { DemoComponent } from './app/app.component';
 })
 export class BootstrapModule {}
 
+if (environment.production) {
+enableProdMode();
+}
 platformBrowserDynamic().bootstrapModule(BootstrapModule);
+

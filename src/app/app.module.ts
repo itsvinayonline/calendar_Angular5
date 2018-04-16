@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +15,6 @@ import { DemoComponent } from '../app/app.component';
     DemoUtilsModule
   ],
   declarations: [DemoComponent],
-  exports: [DemoComponent],
-  bootstrap: [DemoComponent]
+  exports: [DemoComponent]
 })
 export class DemoModule {}
