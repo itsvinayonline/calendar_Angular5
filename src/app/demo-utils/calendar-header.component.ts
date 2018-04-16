@@ -2,7 +2,67 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-demo-utils-calendar-header',
-  template: `../demo-utils/calendar-header.component.html`
+  template: `
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div
+            class="btn btn-primary"
+            mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="viewDateChange.next(viewDate)">
+            Previous
+          </div>
+          <div
+            class="btn btn-outline-secondary">
+            {{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}
+          </div>
+          <div
+            class="btn btn-primary"
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="viewDateChange.next(viewDate)">
+            Next
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        <div class="btn-group outline1">
+
+            <div
+            class="btntype2"
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+            (viewDateChange)="viewDateChange.next(viewDate)">
+            Today
+          </div>
+          <div
+            class="btntype2"
+            (click)="viewChange.emit('month')"
+            [class.active]="view === 'month'">
+            Month
+          </div>
+          <div
+            class="btntype2"
+            (click)="viewChange.emit('week')"
+            [class.active]="view === 'week'">
+            Week
+          </div>
+          <div
+            class="btntype2"
+            (click)="viewChange.emit('day')"
+            [class.active]="view === 'day'">
+            Day
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  `
 })
 export class CalendarHeaderComponent {
   @Input() view: string;

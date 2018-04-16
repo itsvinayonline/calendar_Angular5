@@ -13,6 +13,12 @@ h3 {
   }
   .btntype2:active{    
     color: blue !important;
+    margin: 10px;
+  }
+  .outline1{
+   padding: 5px;
+    border: 1px solid #8080802e;
+    border-radius: 15px;
   }
 
   .modalappointment {

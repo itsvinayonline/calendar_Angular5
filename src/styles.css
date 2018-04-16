@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+.btntype2 {
+    padding: 5px !important;
+    border-right: #80808030 1px solid;
+    margin-right: 5px;
+
+  }
+  .btntype2:active {
+    color: blue !important;
+    text-decoration-color: blue;
+  }
+
+  .btntype2:focus {
+    outline: -webkit-focus-ring-color auto 0px;
+    color: blue !important;
+    text-decoration-color: blue;
+  }
+
+  .outline1{
+   padding: 5px;
+    border: 1px solid #8080802e;
+    border-radius: 15px;
+  }

@@ -24,7 +24,31 @@ export const DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
   selector: 'app-demo-utils-date-time-picker',
-  template: '',
+  template: `
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input
+            readonly
+            class="form-control"
+            [placeholder]="placeholder"
+            name="date"
+            [(ngModel)]="dateStruct"
+            (ngModelChange)="updateDate()"
+            ngbDatepicker
+            #datePicker="ngbDatepicker">
+            <div class="input-group-append" (click)="datePicker.toggle()" >
+              <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+            </div>
+        </div>
+      </div>
+    </form>
+    <ngb-timepicker
+      [(ngModel)]="timeStruct"
+      (ngModelChange)="updateTime()"
+      [meridian]="true">
+    </ngb-timepicker>
+  `,
   styles: [
     `
     .form-group {

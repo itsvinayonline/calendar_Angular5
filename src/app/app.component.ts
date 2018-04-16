@@ -172,11 +172,11 @@ export class DemoComponent {
   //   });
   //   this.refresh.next();
   }
-  cancelPopu(){
+  cancelPopu() {
     this.addAppointmentPopu = true;
   }
   submiApportment(data) {
-  console.log(data)
+  console.log(data);
   this.events.push({
     title: data.meetingTitle,
     start: startOfDay(new Date()),
