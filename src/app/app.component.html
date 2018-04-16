@@ -84,3 +84,31 @@
 
 <br><br><br>
 
+
+<div class="modalappointment" [hidden]='addAppointmentPopu'>
+  <div class="innerModel">
+    <div class="cancelPopup"><i class="fa fa-fw fa-times" (click)='cancelPopu()'></i></div>
+        <h4>Add Appointment</h4>
+
+        <form>
+            <div class="form-group">
+              <label>Enter Meeting Title</label>
+              <input type="text" name='meetingTitle' [(ngModel)]='appointment.meetingTitle' class="form-control" id="Meeting_Title" aria-describedby="Meeting Title" placeholder="Enter Meeting Title">
+            </div>
+            <div class="form-group">
+              <label>Time Slot</label>
+              <div class="timeSlot">
+              <ngb-timepicker name='starttimepicker' [(ngModel)]="appointment.starttime"></ngb-timepicker>
+            </div>
+              
+              <div class="timeSlot">
+                  <span>To</span>
+              <ngb-timepicker name='endtimepicker' [(ngModel)]="appointment.endtime"></ngb-timepicker>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary"(click)='submiApportment(appointment)'>Submit</button>
+          </form>
+
+  </div>
+</div>
+

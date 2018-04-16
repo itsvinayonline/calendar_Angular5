@@ -5,6 +5,7 @@ import { CalendarModule } from 'angular-calendar';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoUtilsModule } from '../app/demo-utils/module';
 import { DemoComponent } from '../app/app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { DemoComponent } from '../app/app.component';
     FormsModule,
     NgbModalModule.forRoot(),
     CalendarModule.forRoot(),
-    DemoUtilsModule
+    DemoUtilsModule,
+    NgbModule
   ],
   declarations: [DemoComponent],
   exports: [DemoComponent]

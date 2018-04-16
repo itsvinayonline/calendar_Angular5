@@ -46,6 +46,18 @@ const colors: any = {
 })
 
 export class DemoComponent {
+    appointment = {
+      meetingTitle : '',
+      starttime : {
+        hour: '00',
+        minute: '00'
+      },
+      endtime : {
+        hour: '23',
+        minute: '59'
+      }
+    };
+    addAppointmentPopu = true;
     @ViewChild('modalContent') modalContent: TemplateRef<any>;
     view = 'month';
     viewDate: Date = new Date();
@@ -75,18 +87,6 @@ export class DemoComponent {
       title: 'A 3 day event',
       color: colors.red,
       actions: this.actions
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue
     },
     {
       start: addHours(startOfDay(new Date()), 2),
@@ -158,18 +158,39 @@ export class DemoComponent {
   }
 
  addApointment() {
-   this.events.push({
-      title: 'Random Title',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      }
-    });
-    this.refresh.next();
+  this.addAppointmentPopu = false;
+  //  this.events.push({
+  //     title: 'Random Title',
+  //     start: startOfDay(new Date()),
+  //     end: endOfDay(new Date()),
+  //     color: colors.red,
+  //     draggable: true,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true
+  //     }
+  //   });
+  //   this.refresh.next();
   }
+  cancelPopu(){
+    this.addAppointmentPopu = true;
+  }
+  submiApportment(data) {
+  console.log(data)
+  this.events.push({
+    title: data.meetingTitle,
+    start: startOfDay(new Date()),
+    end: endOfDay(new Date()),
+    color: colors.red,
+    draggable: false,
+    resizable: {
+      beforeStart: false,
+      afterEnd: false
+    }
+  });
+  this.refresh.next();
+  this.addAppointmentPopu = true;
+  }
+
 
 }
