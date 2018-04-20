@@ -69,13 +69,13 @@ export class DemoComponent {
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
-      title: 'A 3 day event',
+      title: 'Syncup Team Meeting',
       color: colors.red,
     },
     {
       start: addHours(startOfDay(new Date()), 2),
       end: new Date(),
-      title: 'A draggable and resizable event',
+      title: 'Scrum Call for Project',
       color: colors.yellow,
 
       resizable: {
