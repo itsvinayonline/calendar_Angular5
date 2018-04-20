@@ -21,4 +21,8 @@ export class BootstrapModule {}
 if (environment.production) {
 enableProdMode();
 }
+
 platformBrowserDynamic().bootstrapModule(BootstrapModule);
+// const bootstrap = () => {
+//   platformBrowserDynamic().bootstrapModule(DemoModule);
+// };
