@@ -156,7 +156,7 @@ export class DemoComponent {
   //   });
   //   this.refresh.next();
   }
-  cancelPopu(){
+  cancelPopu() {
     this.addAppointmentPopu = true;
   }
   submiApportment(data) {

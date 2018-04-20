@@ -28,6 +28,7 @@
     "core-js": "^2.4.1",
     "date-fns": "^1.29.0",
     "rxjs": "^5.5.6",
+    "vk-custom-angular2-datetimepicker": "^1.1.11",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

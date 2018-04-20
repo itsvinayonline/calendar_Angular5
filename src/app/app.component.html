@@ -40,7 +40,14 @@
     <!-- <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span> -->
     <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
   </div>
-  <small *ngIf="day.events.length>0" style="margin: 5px">There are {{ day.events.length }} events on this day</small>
+  <small *ngIf="day.events.length>0" style="margin: 5px">
+    <ul>
+      
+       <li *ngFor="let event of day.events">
+          {{event.title}}
+      </li> 
+    </ul>
+  </small>
 </ng-template>
 
 <div [ngSwitch]="view">
@@ -70,24 +77,26 @@
     <div class="cancelPopup"><i class="fa fa-fw fa-times" (click)='cancelPopu()'></i></div>
         <h4>Add Appointment</h4>
 
-        <form>
-            <div class="form-group">
-              <label>Enter Meeting Title</label>
-              <input type="text" name='meetingTitle' [(ngModel)]='appointment.meetingTitle' class="form-control" id="Meeting_Title" aria-describedby="Meeting Title" placeholder="Enter Meeting Title">
-            </div>
-            <div class="form-group">
-              <label>Time Slot</label>
-              <div class="timeSlot">
-              <ngb-timepicker name='starttimepicker' [(ngModel)]="appointment.starttime"></ngb-timepicker>
-            </div>
-              
-              <div class="timeSlot">
-                  <span>To</span>
-              <ngb-timepicker name='endtimepicker' [(ngModel)]="appointment.endtime"></ngb-timepicker>
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary"(click)='submiApportment(appointment)'>Submit</button>
-          </form>
+    <form>
+      <div class="form-group">
+        <label>Enter Meeting Title</label>
+        <input type="text" name='meetingTitle' [(ngModel)]='appointment.meetingTitle'  required class="form-control" id="Meeting_Title" aria-describedby="Meeting Title" placeholder="Enter Meeting Title">
+      </div>
+      
+      <div class="form-group">
+        <label>Time Slot</label>
+        <div class="timeSlot">
+          <app-demo-utils-date-time-picker name="meeting Start time" [(ngModel)]="appointment.starttime" (ngModelChange)="refresh.next()" placeholder="Start Date">
+            </app-demo-utils-date-time-picker>
+      </div>
+        <div class="timeSlot">
+            <span>To</span>
+            <app-demo-utils-date-time-picker  name="meeting end time"[(ngModel)]="appointment.endtime" (ngModelChange)="refresh.next()" placeholder="End Date">
+              </app-demo-utils-date-time-picker>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary"(click)='submiApportment(appointment)'>Submit</button>
+    </form>
 
   </div>
 </div>
