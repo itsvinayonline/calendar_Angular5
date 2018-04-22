@@ -12,7 +12,15 @@ import {
   endOfMonth,
   isSameDay,
   isSameMonth,
-  addHours
+  addHours,
+  format,
+  getYear,
+  getMonth,
+  getDate,
+  getHours,
+  getMinutes,
+  getSeconds,
+  isDate
 } from 'date-fns';
 
 import { Subject } from 'rxjs/Subject';
@@ -46,18 +54,13 @@ const colors: any = {
 })
 
 export class DemoComponent {
-    appointment = {
-      meetingTitle : '',
-      starttime : {
-        hour: '00',
-        minute: '00'
-      },
-      endtime : {
-        hour: '23',
-        minute: '59'
-      }
-    };
-    addAppointmentPopu = true;
+  appointment = {
+    meetingTitle : '',
+    starttime: this.getDateFromDateWithoutSecond(new Date()),
+    endtime:  this.getDateFromDateWithoutSecond(new Date())
+  };
+
+    isPopUpRequiredForAddAppointment = true;
     @ViewChild('modalContent') modalContent: TemplateRef<any>;
     view = 'month';
     viewDate: Date = new Date();
@@ -94,6 +97,14 @@ export class DemoComponent {
   public DemoComponent() {
   }
 
+  getDateFromDateWithoutSecond(dateValue: Date) {
+    return new Date(
+      getYear(dateValue),
+      getMonth(dateValue),
+      getDate(dateValue),
+      getHours(dateValue),
+      getMinutes(dateValue));
+  }
 
   // constructor(private modal: NgbModal) {}
    dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -142,39 +153,35 @@ export class DemoComponent {
   }
 
  addApointment() {
-  this.addAppointmentPopu = false;
-  //  this.events.push({
-  //     title: 'Random Title',
-  //     start: startOfDay(new Date()),
-  //     end: endOfDay(new Date()),
-  //     color: colors.red,
-  //     draggable: true,
-  //     resizable: {
-  //       beforeStart: true,
-  //       afterEnd: true
-  //     }
-  //   });
-  //   this.refresh.next();
+  this.isPopUpRequiredForAddAppointment = false;
   }
   cancelPopu() {
-    this.addAppointmentPopu = true;
+    this.isPopUpRequiredForAddAppointment = true;
   }
-  submiApportment(data) {
-  console.log(data);
-  this.events.push({
-    title: data.meetingTitle,
-    start: startOfDay(new Date()),
-    end: endOfDay(new Date()),
-    color: colors.red,
-    draggable: false,
-    resizable: {
-      beforeStart: false,
-      afterEnd: false
+  submitAppointment(data) {
+    console.log(data);
+    // alert(this.getDateFromDateString(data.starttime));
+    // alert(new Date(format(data.starttime, 'DD/MM/YYYY HH:mm:ss')));
+    // alert(format(data.endtime, 'DD/MM/YYYY HH:mm:ss'));
+    if (data.meetingTitle.length <= 0) {
+      alert('Error: title cannot be empty.');
+      this.isPopUpRequiredForAddAppointment = false;
+    } else if (data.endtime <= data.starttime) {
+      alert('Error: end time cannot be less than start time.');
+      this.isPopUpRequiredForAddAppointment = false;
+    } else {
+    this.events.push({
+      title: data.meetingTitle,
+      start: new Date(data.starttime),
+      // start: startOfDay(new Date()),
+      end: new Date(data.endtime),
+      color: colors.red,
+      draggable: false,
+      resizable: { beforeStart: false, afterEnd: false}
+    });
+    this.isPopUpRequiredForAddAppointment = true;
+    this.refresh.next();
     }
-  });
-  this.refresh.next();
-  this.addAppointmentPopu = true;
+
   }
-
-
 }

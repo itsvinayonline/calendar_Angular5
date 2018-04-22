@@ -7,24 +7,24 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <div class="col-md-4">
         <div class="btn-group">
           <div
-            class="btn btn-primary"
+            class="btn sidebtn"
             mwlCalendarPreviousView
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Previous
+            <
           </div>
           <div
-            class="btn btn-outline-secondary">
+            class="btn centerBtn">
             {{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}
           </div>
           <div
-            class="btn btn-primary"
+            class="btn sidebtn"
             mwlCalendarNextView
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Next
+            >
           </div>
         </div>
       </div>

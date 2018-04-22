@@ -21,3 +21,12 @@
     border: 1px solid #8080802e;
     border-radius: 15px;
   }
+  .centerBtn {
+    color: blue;
+    font-size: 24px !important;
+    font-style: oblique;
+}
+.sidebtn {
+  padding: 5px;
+  font-size: 25px;
+}

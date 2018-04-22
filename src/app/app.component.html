@@ -44,7 +44,7 @@
     <ul>
       
        <li *ngFor="let event of day.events">
-          {{event.title}}
+          <span (click)=addApointment(); >{{event.title}}</span>
       </li> 
     </ul>
   </small>
@@ -55,16 +55,19 @@
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
+    [refresh]="refresh"
     [cellTemplate]="customCellTemplate">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
+    [refresh]="refresh"
     [events]="events">
   </mwl-calendar-week-view>
   <mwl-calendar-day-view
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
+    [refresh]="refresh"
     [events]="events">
   </mwl-calendar-day-view>
 </div>
@@ -72,7 +75,7 @@
 <br><br><br>
 
 
-<div class="modalappointment" [hidden]='addAppointmentPopu'>
+<div class="modalappointment" [hidden]='isPopUpRequiredForAddAppointment'>
   <div class="innerModel">
     <div class="cancelPopup"><i class="fa fa-fw fa-times" (click)='cancelPopu()'></i></div>
         <h4>Add Appointment</h4>
@@ -95,7 +98,7 @@
               </app-demo-utils-date-time-picker>
         </div>
       </div>
-      <button type="button" class="btn btn-primary"(click)='submiApportment(appointment)'>Submit</button>
+      <button type="button" class="btn btn-primary"(click)='submitAppointment(appointment)'>Submit</button>
     </form>
 
   </div>
