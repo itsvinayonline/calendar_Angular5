@@ -21,6 +21,33 @@ h3 {
     border-radius: 15px;
   }
 
+  .outline11{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 35px;
+    border: 1px solid #8080802e;
+    border-radius: 15px;
+    width:74%
+   }
+   .outline11:focus{
+    outline: none
+   }
+
+   .image {
+    width: 20px;
+    height: 20px;
+    margin-left: -41px;
+   }
+   .image:focus{
+    outline: none
+   }
+
+   .search{
+    color:#847c7c;
+    margin-right: 5px;
+   }
+
   .modalappointment {
     position: fixed;
     top: 0;
