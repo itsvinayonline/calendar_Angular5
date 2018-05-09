@@ -8,8 +8,8 @@
     </div>
     <div class="col-md-4">
       <label class="search">Search Appointment</label>
-      <input  class="outline11" type="text" placeholder="Please Enter Meeting title">
-      <input class="image" type=image src="../assets/Search.png" alt="Submit feedback">
+      <input  class="outline11" type="text" [(ngModel)]='meetingTitle'  placeholder="Please Enter Meeting title">
+      <input class="image" (click)='searchAppointment(meetingTitle)' type=image src="../assets/Search.png" alt="Submit feedback">
     </div>
 
 </div>
@@ -84,7 +84,7 @@
               </app-demo-utils-date-time-picker>
         </div>
       </div>
-      <button type="button" class="btn btn-primary"(click)='submitAppointment(appointment)'>Submit</button>
+      <button type="button" class="btn btn-primary" (click)='submitAppointment(appointment)'>Submit</button>
     </form>
 
   </div>

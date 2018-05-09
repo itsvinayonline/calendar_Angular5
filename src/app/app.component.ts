@@ -61,6 +61,7 @@ export class DemoComponent {
   };
 
     isPopUpRequiredForAddAppointment = true;
+    meetingList;
     @ViewChild('modalContent') modalContent: TemplateRef<any>;
     view = 'month';
     viewDate: Date = new Date();
@@ -137,20 +138,20 @@ export class DemoComponent {
     // this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-   addEvent(): void {
-    this.events.push({
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      }
-    });
-    this.refresh.next();
-  }
+  //  addEvent(): void {
+  //   this.events.push({
+  //     title: 'New event',
+  //     start: startOfDay(new Date()),
+  //     end: endOfDay(new Date()),
+  //     color: colors.red,
+  //     draggable: true,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true
+  //     }
+  //   });
+  //   this.refresh.next();
+  // }
 
  addApointment() {
   this.isPopUpRequiredForAddAppointment = false;
@@ -179,9 +180,19 @@ export class DemoComponent {
       draggable: false,
       resizable: { beforeStart: false, afterEnd: false}
     });
+
+    this.meetingList = this.events;
     this.isPopUpRequiredForAddAppointment = true;
     this.refresh.next();
     }
 
+  }
+
+  searchAppointment(searchText) {
+    console.log(searchText);
+    this.meetingList = this.events;
+
+    const filteredMeetings = this.meetingList.filter(title => this.meetingList.title === searchText);
+    console.log(filteredMeetings);
   }
 }
